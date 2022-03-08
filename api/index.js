@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true }))
 //Routes
 
 app.use('/api', apiRoutes)
+app.get('/*', (req, res) => res.status(400).json({ succes: false, error: `Ruta ${req.url} en método ${req.method} no implementada` }));
+
 
 const connectedServer = app.listen(PORT, () => { console.log(`Server conectado con puerto ${PORT}`) })
 
