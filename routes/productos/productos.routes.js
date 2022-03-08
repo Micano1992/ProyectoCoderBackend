@@ -9,13 +9,21 @@ const productosFunciones = new contenedorProducto('data/productos.txt')
 
 let ultimoId = 1
 
-router.get('/:id', (req, res) => {
+router.get('/:id?', (req, res) => {
 
     const { id } = req.params
 
-    productosFunciones.getAll()
-        .then((resultado) => { res.json({ buscada: resultado.find(producto => producto.id == id) }) })
+    if (id) {
+        productosFunciones.getAll()
+            .then((resultado) => { res.json({ buscada: resultado.find(producto => producto.id == id) }) })
+    }
+    else {
+        productosFunciones.getAll()
+            .then((resultado) => {
+                res.json({ buscada: resultado })
+            })
 
+    }
 })
 
 router.post('/', (req, res) => {
