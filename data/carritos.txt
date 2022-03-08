@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "timestamp": "Mon Mar 07 2022",
+    "productos": [
+      {
+        "nombre": "relo",
+        "descripcion": "Reloj de pared",
+        "codigo": "C1",
+        "precio": 11,
+        "stock": 25,
+        "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+        "id": "2"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "timestamp": "Mon Mar 07 2022",
+    "productos": [
+      {
+        "nombre": "relo",
+        "descripcion": "Reloj de pared",
+        "codigo": "C1",
+        "precio": 11,
+        "stock": 25,
+        "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+        "id": "2"
+      },
+      {
+        "nombre": "nom3",
+        "descripcion": "Hoja",
+        "codigo": "MLM",
+        "url": "url",
+        "precio": 111,
+        "stock": 333,
+        "id": "3",
+        "timestamp": "Mon Mar 07 2022"
+      }
+    ]
+  }
+]
