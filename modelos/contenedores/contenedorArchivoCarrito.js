@@ -1,9 +1,10 @@
 const fs = require('fs');
 
+const ruta = 'modelos/contenedores/carritos.txt'
+
 class contenedorCarrito {
 
-    constructor(ruta) {
-        this.ruta = ruta
+    constructor() {
     }
 
 
@@ -12,7 +13,7 @@ class contenedorCarrito {
 
             let carrito = { id: 0, timestamp: 0 }
 
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const carritos = JSON.parse(contenido)
 
@@ -26,7 +27,7 @@ class contenedorCarrito {
 
             carritos.push(carrito);
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(carritos, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(carritos, null, 2))
 
             this.actualizarUltimoId()
 
@@ -41,13 +42,13 @@ class contenedorCarrito {
     deleteById = async (id) => {
 
         try {
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const carritos = JSON.parse(contenido)
 
             const carritosFiltrados = carritos.filter(carr => carr.id != id)
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(carritosFiltrados, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(carritosFiltrados, null, 2))
         }
         catch (err) {
             console.log(`Se produjo un error: ${err}`)
@@ -58,7 +59,7 @@ class contenedorCarrito {
 
         try {
 
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const carritos = JSON.parse(contenido)
 
@@ -74,7 +75,7 @@ class contenedorCarrito {
     getAll = async () => {
 
         try {
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const productos = JSON.parse(contenido)
 
@@ -88,7 +89,7 @@ class contenedorCarrito {
 
     update = async (carrito) => {
         try {
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const carritos = JSON.parse(contenido)
 
@@ -98,7 +99,7 @@ class contenedorCarrito {
 
             carritosFiltrados.push(carrito)
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(carritosFiltrados, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(carritosFiltrados, null, 2))
 
         }
         catch (err) {
@@ -112,7 +113,7 @@ class contenedorCarrito {
         try {
             let productos = []
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(productos, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(productos, null, 2))
                 .then(() => {
                     console.log("Se borran los elementos")
                 })
@@ -127,7 +128,7 @@ class contenedorCarrito {
     addProduct = async (producto, idCarrito) => {
         try {
 
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const carritos = JSON.parse(contenido)
 
@@ -141,7 +142,7 @@ class contenedorCarrito {
 
             carritos.push(carrito);
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(carritos, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(carritos, null, 2))
 
             this.actualizarUltimoId()
 
@@ -154,7 +155,7 @@ class contenedorCarrito {
     }
 
     obtenerUltimoId = async () => {
-        const contenido = fs.promises.readFile('data/ultimoIdCarrito.txt', 'utf-8')
+        const contenido = fs.promises.readFile('modelos/contenedores/ultimoIdCarrito.txt', 'utf-8')
 
         return contenido
     }
@@ -168,7 +169,7 @@ class contenedorCarrito {
 
                 nuevoId = Number(resultado) + 1
 
-                fs.promises.writeFile('data/ultimoIdCarrito.txt', nuevoId.toString())
+                fs.promises.writeFile('modelos/contenedores/ultimoIdCarrito.txt', nuevoId.toString())
             })
     }
 }

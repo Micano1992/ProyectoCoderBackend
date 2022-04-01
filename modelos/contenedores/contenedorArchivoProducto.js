@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+const ruta = 'modelos/contenedores/productos.txt'
+
 class ContenedorProducto {
 
     constructor(ruta) {
@@ -9,7 +11,7 @@ class ContenedorProducto {
 
     save = async (producto) => {
         try {
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const productos = JSON.parse(contenido)
 
@@ -23,7 +25,7 @@ class ContenedorProducto {
 
             productos.push(producto);
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(productos, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(productos, null, 2))
 
             this.actualizarUltimoId()
 
@@ -39,7 +41,7 @@ class ContenedorProducto {
 
         try {
 
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const productos = JSON.parse(contenido)
 
@@ -55,7 +57,7 @@ class ContenedorProducto {
     getAll = async () => {
 
         try {
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const productos = JSON.parse(contenido)
 
@@ -69,7 +71,7 @@ class ContenedorProducto {
 
     update = async (producto) => {
         try {
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const productos = JSON.parse(contenido)
 
@@ -79,7 +81,7 @@ class ContenedorProducto {
 
             productosFiltrados.push(producto)
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(productosFiltrados, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(productosFiltrados, null, 2))
 
         }
         catch (err) {
@@ -90,13 +92,13 @@ class ContenedorProducto {
     deleteById = async (id) => {
 
         try {
-            const contenido = await fs.promises.readFile(this.ruta, 'utf-8')
+            const contenido = await fs.promises.readFile(ruta, 'utf-8')
 
             const productos = JSON.parse(contenido)
 
             const productosFiltrados = productos.filter(prod => prod.id != id)
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(productosFiltrados, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(productosFiltrados, null, 2))
         }
         catch (err) {
             console.log(`Se produjo un error: ${err}`)
@@ -108,7 +110,7 @@ class ContenedorProducto {
         try {
             let productos = []
 
-            await fs.promises.writeFile(this.ruta, JSON.stringify(productos, null, 2))
+            await fs.promises.writeFile(ruta, JSON.stringify(productos, null, 2))
                 .then(() => {
                     console.log("Se borran los elementos")
                 })
@@ -122,7 +124,7 @@ class ContenedorProducto {
 
 
     obtenerUltimoId = async () => {
-        const contenido = fs.promises.readFile('data/ultimoIdProducto.txt', 'utf-8')
+        const contenido = fs.promises.readFile('modelos/contenedores/ultimoIdProducto.txt', 'utf-8')
 
         return contenido
     }
@@ -136,7 +138,7 @@ class ContenedorProducto {
 
                 nuevoId = Number(resultado) + 1
 
-                fs.promises.writeFile('data/ultimoIdProducto.txt', nuevoId.toString())
+                fs.promises.writeFile('modelos/contenedores//ultimoIdProducto.txt', nuevoId.toString())
             })
     }
 }

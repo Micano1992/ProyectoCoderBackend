@@ -1,7 +1,6 @@
 const express = require('express');
+const { ENV: { PORT } } = require('../config');
 const apiRoutes = require('../routes/index');
-
-const PORT = process.env.PORT || 8080
 
 const app = express()
 

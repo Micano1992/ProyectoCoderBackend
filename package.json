@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "firebase-admin": "^10.0.2",
     "fs": "^0.0.1-security",
+    "mongoose": "^6.2.9",
+    "mongose": "^0.0.2-security",
     "nodemon": "^2.0.15",
     "route": "^0.2.5"
   }

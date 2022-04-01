@@ -16,5 +16,16 @@
     "stock": 25,
     "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
     "id": "2"
+  },
+  {
+    "nombre": "Cuaderno",
+    "descripcion": "Cuaderno copado",
+    "codigo": "A1",
+    "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png",
+    "precio": 10,
+    "stock": 123,
+    "isAdmin": true,
+    "id": "3",
+    "timestamp": "Fri Apr 01 2022"
   }
 ]
